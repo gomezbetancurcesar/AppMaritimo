@@ -2,6 +2,11 @@ package Data;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Maritimo {
     private Long idCliente;
     private Date fechaTransporte;
@@ -37,29 +42,33 @@ public class Maritimo {
         return idTransporte;
     }
 
+    @XmlElement
     public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
 
+    @XmlElement
     public void setFechaTransporte(Date fechaTransporte) {
         this.fechaTransporte = fechaTransporte;
     }
 
+    @XmlElement
     public void setCatidadTransporte(Integer catidadTransporte) {
         this.catidadTransporte = catidadTransporte;
     }
 
+    @XmlElement
     public void setOrigen(String Origen) {
         this.Origen = Origen;
     }
 
+    @XmlElement
     public void setDestino(String Destino) {
         this.Destino = Destino;
     }
 
+    @XmlElement
     public void setIdTransporte(Integer idTransporte) {
         this.idTransporte = idTransporte;
     }
-    
-    
 }

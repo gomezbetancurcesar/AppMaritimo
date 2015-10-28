@@ -4,6 +4,7 @@ import javax.xml.soap.*;
 import javax.xml.transform.*;
 import javax.xml.transform.stream.*;
 
+
 public class SoapClient{
 
     public static void conectar(){
