@@ -34,7 +34,7 @@ public class Test extends HttpServlet {
             String Destino = request.getParameter("Destino");
             Integer idTransporte = Integer.parseInt(request.getParameter("idTransporte"));
             
-            maritimo.setCatidadTransporte(catidadTransporte);
+            maritimo.setCantidadTransporte(catidadTransporte);
             maritimo.setOrigen(Origen);
             maritimo.setDestino(Destino);
             maritimo.setFechaTransporte(fechaTransporte);
@@ -44,11 +44,14 @@ public class Test extends HttpServlet {
             xml.agregarNave(maritimo);
             xml.agregarNave(maritimo);
             xml.agregarNave(maritimo);
+            
+            String xmlText = "";
             try {
-                xml.generateXML();
+                xmlText = xml.generateXML();
             } catch (JAXBException ex) {
                 Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             
             /* TODO output your page here. You may use following sample code. */
             out.println("<h1>" + maritimo.getDestino() + "</h1>");
@@ -59,6 +62,7 @@ public class Test extends HttpServlet {
             out.println("<h1>" + request.getParameter("Origen") + "</h1>");    
             out.println("<h1>" + request.getParameter("Destino") + "</h1>");    
             out.println("<h1>" + request.getParameter("idTransporte") + "</h1>");    
+            out.println("<h1> XML" + xmlText + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

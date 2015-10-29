@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Maritimo {
     private Long idCliente;
     private Date fechaTransporte;
-    private Integer catidadTransporte;
+    private Integer cantidadTransporte;
     private String Origen;
     private String Destino;
     private Integer idTransporte;
@@ -26,8 +26,8 @@ public class Maritimo {
         return fechaTransporte;
     }
 
-    public Integer getCatidadTransporte() {
-        return catidadTransporte;
+    public Integer getCantidadTransporte() {
+        return cantidadTransporte;
     }
 
     public String getOrigen() {
@@ -53,8 +53,8 @@ public class Maritimo {
     }
 
     @XmlElement
-    public void setCatidadTransporte(Integer catidadTransporte) {
-        this.catidadTransporte = catidadTransporte;
+    public void setCantidadTransporte(Integer cantidadTransporte) {
+        this.cantidadTransporte = cantidadTransporte;
     }
 
     @XmlElement
