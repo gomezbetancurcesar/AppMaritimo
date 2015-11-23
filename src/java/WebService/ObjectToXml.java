@@ -17,19 +17,20 @@ import javax.xml.soap.SOAPConnection;
 import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPMessage;
 
-public class ObjectToXml{
-    private final Maritimos maritimos = new Maritimos();
+public class ObjectToXml extends SoapClient{
+    private final Maritimos transacciones = new Maritimos();
     private final String filename;
     private final String url;
+    private String msgBody;
     
     public ObjectToXml(){
-        maritimos.setEmployees(new ArrayList<Maritimo>());
+        transacciones.setEmployees(new ArrayList<Maritimo>());
         this.url = "http://ws.cdyne.com/emailverify/Emailvernotestemail.asmx";
         this.filename = "/home/cesar-gomez/xml/file.xml";
     }
     
     public void agregarNave(Maritimo maritimo){
-        maritimos.getEmployees().add(maritimo);
+        transacciones.getEmployees().add(maritimo);
     }
     
     public String generateXML() throws JAXBException{
@@ -47,11 +48,14 @@ public class ObjectToXml{
         jaxbMarshaller.setProperty("jaxb.fragment", Boolean.TRUE);
         
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        jaxbMarshaller.marshal(maritimos, outputStream);
+        jaxbMarshaller.marshal(transacciones, outputStream);
         
-        String payload = new String(outputStream.toByteArray());
+        String transacciones = new String(outputStream.toByteArray());
         
-        output = String.format(soapEnvelope, payload);
+        output = transacciones;
+        this.msgBody = transacciones;
+        //output = String.format(soapEnvelope, transacciones);
+        
         this.crearArchivo(output);
         
         return output;
@@ -69,21 +73,7 @@ public class ObjectToXml{
         }
     }
     
-    public void conectar(String data){
-        try {
-            SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-            SOAPConnection soapConnection = soapConnectionFactory.createConnection();
-
-            // Send SOAP Message to SOAP Server
-            String url = "http://ws.cdyne.com/emailverify/Emailvernotestemail.asmx";
-            
-            InputStream is = new ByteArrayInputStream(data.getBytes());
-            SOAPMessage request = MessageFactory.newInstance().createMessage(null, is);
-            SOAPMessage soapResponse = soapConnection.call(request, url);
-            soapConnection.close();
-        } catch (Exception e) {
-            System.err.println("Error occurred while sending SOAP Request to Server");
-            e.printStackTrace();
-        }
+    public void llamar(){
+        //this.conectar();
     }
 }

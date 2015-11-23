@@ -6,10 +6,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "maritimos")
+@XmlRootElement(name = "aaa")
 @XmlAccessorType (XmlAccessType.FIELD)
 public class Maritimos{
-    @XmlElement(name = "maritimo")
+    @XmlElement(name = "transaccion")
     private List<Maritimo> maritimos = null;
  
     public List<Maritimo> getEmployees() {
